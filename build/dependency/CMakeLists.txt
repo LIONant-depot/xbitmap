@@ -24,6 +24,32 @@ endif()
 # Define as an interface library only if not already defined
 #
 if(NOT TARGET xbitmap)
+
+  # Define xbitmap as a proper static library
   add_library(xbitmap INTERFACE)
-  target_include_directories(xbitmap INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/../..")
+
+  # determine the root of our library
+  if("${TARGET_PROJECT}" STREQUAL "xbitmap_unit_test")
+    set(ROOT "../..")
+  else()
+    set(ROOT "../../dependencies/xbitmap")
+  endif()
+
+  # set the include path for xbitmap
+  set(XBITMAP_INCLUDE_LIST "${ROOT}")
+
+  # set the files required for xbitmap
+  set(XBITMAP_FILES_LIST
+    "${ROOT}/source/xbitmap.h"
+    "${ROOT}/source/xbitmap.cpp"
+    "${ROOT}/source/xcolor.h"
+    "${ROOT}/README.md"
+  )
+
+  # Set global properties
+  set_property(GLOBAL PROPERTY XBITMAP_GROUP "dependencies/xcore/xbitmap")
+  set_property(GLOBAL PROPERTY XBITMAP_FILES "${XBITMAP_FILES_LIST}")
+  set_property(GLOBAL PROPERTY XBITMAP_INCLUDES "${XBITMAP_INCLUDE_LIST}")
+  set_property(GLOBAL APPEND PROPERTY COMPONENT_REGISTRY "XBITMAP")
+
 endif()
