@@ -26,25 +26,25 @@ include(FetchContent)
 
 # Define the main executable
 # This is important to be first so we cann add the target_links to it...
-add_executable(xbitmap_unit_test "../source/unit_test/main.cpp"
-                                "../source/unit_test/xbitmap_unittest.h"
-                                "../source/unit_test/xcolor_unittest.h"
+add_executable(xbitmap_unit_test "source/unit_test/main.cpp"
+                                 "source/unit_test/xbitmap_unittest.h"
+                                 "source/unit_test/xcolor_unittest.h"
 )
 
 #
 # Organize the project a little
 #
-source_group("unit_test" FILES "../source/unit_test/xbitmap_unittest.h" 
-                               "../source/unit_test/xcolor_unittest.h"
+source_group("unit_test" FILES "source/unit_test/xbitmap_unittest.h" 
+                               "source/unit_test/xcolor_unittest.h"
 )
 
-source_group("" FILES "../source/unit_test/main.cpp"
+source_group("" FILES "source/unit_test/main.cpp"
 )
 
 #
 # Populate requirements for xbitmap
 #
-add_subdirectory("dependency" "${CMAKE_CURRENT_BINARY_DIR}/xbitmap")
+add_subdirectory("build/dependency" "${CMAKE_CURRENT_BINARY_DIR}/xbitmap")
 
 #
 # Set the source file into the project as well as organize them in the IDE
@@ -52,17 +52,32 @@ add_subdirectory("dependency" "${CMAKE_CURRENT_BINARY_DIR}/xbitmap")
 get_property(COMPONENT_REGISTRY GLOBAL PROPERTY COMPONENT_REGISTRY)
 message(STATUS "Processing component registry: ${COMPONENT_REGISTRY}")
 foreach(COMPONENT_ID ${COMPONENT_REGISTRY})
-    get_property(GROUP GLOBAL PROPERTY ${COMPONENT_ID}_GROUP)
-    get_property(FILES GLOBAL PROPERTY ${COMPONENT_ID}_FILES)
-    get_property(INCLUDES GLOBAL PROPERTY ${COMPONENT_ID}_INCLUDES)
 
-    if(GROUP AND FILES)
+    # add source files if it has any
+    get_property(FILES GLOBAL PROPERTY ${COMPONENT_ID}_FILES)
+    if(FILES)
         target_sources(${TARGET_PROJECT} PRIVATE ${FILES})
-        target_include_directories(${TARGET_PROJECT} PRIVATE ${INCLUDES})
-        source_group("${GROUP}" FILES ${FILES})
-    else()
-        message(WARNING "Component ${COMPONENT_ID} missing GROUP or FILES properties")
     endif()
+    
+    # add groups to organize the files in the ide
+    get_property(GROUP GLOBAL PROPERTY ${COMPONENT_ID}_GROUP)
+    if(GROUP)
+        source_group("${GROUP}" FILES ${FILES})
+    endif()
+
+    # add includes if we need them
+    get_property(INCLUDES GLOBAL PROPERTY ${COMPONENT_ID}_INCLUDES)
+    if(INCLUDES)
+        target_include_directories(${TARGET_PROJECT} PRIVATE ${INCLUDES})
+    endif()
+
+    # add linker paths
+    get_property(LINKER_PATHS GLOBAL PROPERTY ${COMPONENT_ID}_LINKER_PATHS)
+    if(LINKER_PATHS)
+        message("LINKER_PATHS: ${LINKER_PATHS}")
+        target_link_directories(${TARGET_PROJECT} PRIVATE ${LINKER_PATHS})
+    endif()
+        
 endforeach()
 
 #

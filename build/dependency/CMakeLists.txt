@@ -8,7 +8,7 @@ FetchContent_Declare(
   xerr
   GIT_REPOSITORY https://github.com/LIONant-depot/xerr.git
   GIT_TAG        main
-  SOURCE_DIR     "${CMAKE_SOURCE_DIR}/../dependencies/xerr"  # Adjusted to go up one level
+  SOURCE_DIR     "${CMAKE_SOURCE_DIR}/dependencies/xerr"  # Adjusted to go up one level
 )
 
 FetchContent_GetProperties(xerr)
@@ -17,7 +17,7 @@ if(NOT xerr_POPULATED)
   FetchContent_MakeAvailable(xerr)
   
   # Include xerr's CMakeLists.txt
-  add_subdirectory("../../dependencies/xerr/build/dependency" "${CMAKE_CURRENT_BINARY_DIR}/xerr")
+  add_subdirectory("${CMAKE_SOURCE_DIR}/dependencies/xerr/build/dependency" "${CMAKE_CURRENT_BINARY_DIR}/xerr")
 endif()
 
 #
@@ -30,13 +30,14 @@ if(NOT TARGET xbitmap)
 
   # determine the root of our library
   if("${TARGET_PROJECT}" STREQUAL "xbitmap_unit_test")
-    set(ROOT "../..")
+    set(ROOT ".")
   else()
-    set(ROOT "../../dependencies/xbitmap")
-  endif()
+    set(ROOT "dependencies/xbitmap")
 
-  # set the include path for xbitmap
-  set(XBITMAP_INCLUDE_LIST "${ROOT}")
+    # set the include path for xbitmap
+    set(XBITMAP_INCLUDE_LIST "${ROOT}")
+
+  endif()
 
   # set the files required for xbitmap
   set(XBITMAP_FILES_LIST
