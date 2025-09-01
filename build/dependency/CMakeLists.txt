@@ -7,4 +7,7 @@ DefineInterfaceComponent(xbitmap "dependencies/xcore"
   "source/xbitmap.cpp"
   "source/xcolor.h"
   "README.md"
+  "**Implementation"
+  "source/implementation/xbitmap_inline.h"
+  "source/implementation/xcolor_inline.h"
 )

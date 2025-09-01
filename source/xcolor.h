@@ -176,9 +176,10 @@ namespace xcolor
                                                                     ) noexcept;
         inline              unit&               setupFromLight      ( const std::array<float, 3>& LightDir
                                                                     ) noexcept;
-        inline              unit&               setupFromNormal     ( const std::array<float, 3>& LightDir
+        inline              unit&               setupFromNormal     ( const std::array<float, 3>& Normal
                                                                     ) noexcept;
-
+        inline              unit&               setupFromNormal     ( const std::array<float, 3>&& Normal
+                                                                    ) noexcept;
         // Access the color in different forms
         inline              element&            operator []         ( int Index
                                                                     ) noexcept;
