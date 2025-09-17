@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <wchar.h>
 #include <format>
-#include <windows.h>
 
 namespace xbitmap_details
 {
@@ -71,20 +70,45 @@ namespace xbitmap_details
 namespace xbitmap_details
 {
     //-------------------------------------------------------------------------------
-    static
-    std::string wstring_to_utf8(const std::wstring& wstr)
+    static std::string wstring_to_utf8(const std::wstring& wstr)
     {
-        if (wstr.empty()) return {};
-
-        int size_needed = WideCharToMultiByte(
-            CP_UTF8, 0, wstr.c_str(), -1, nullptr, 0, nullptr, nullptr
-        );
-
-        std::string result(size_needed - 1, 0); // exclude null terminator
-        WideCharToMultiByte(
-            CP_UTF8, 0, wstr.c_str(), -1, result.data(), size_needed, nullptr, nullptr
-        );
-
+        std::string result;
+        for (std::uint32_t wc : wstr) 
+        {
+            if (wc <= 0x7F) 
+            {
+                result += static_cast<char>(wc);
+            }
+            else if (wc <= 0x7FF) 
+            {
+                result += static_cast<char>(0xC0 | ((wc >> 6) & 0x1F));
+                result += static_cast<char>(0x80 | (wc & 0x3F));
+            }
+            else if (wc <= 0xFFFF)
+            {
+                result += static_cast<char>(0xE0 | ((wc >> 12) & 0x0F));
+                result += static_cast<char>(0x80 | ((wc >> 6) & 0x3F));
+                result += static_cast<char>(0x80 | (wc & 0x3F));
+            }
+            else if constexpr (sizeof(wchar_t) == 4)
+            {
+                if (wc <= 0x10FFFF)
+                {
+                    result += static_cast<char>(0xF0 | ((wc >> 18) & 0x07));
+                    result += static_cast<char>(0x80 | ((wc >> 12) & 0x3F));
+                    result += static_cast<char>(0x80 | ((wc >> 6) & 0x3F));
+                    result += static_cast<char>(0x80 | (wc & 0x3F));
+                }
+                else
+                {
+                    throw std::runtime_error("Invalid Unicode code point");
+                }
+            }
+            else 
+            {
+                throw std::runtime_error("Invalid Unicode code point");
+            }
+        }
         return result;
     }
 
@@ -94,7 +118,7 @@ namespace xbitmap_details
     {
         std::array<wchar_t, 256> ErrString;
         _wcserror_s(ErrString.data(), ErrString.size(), Err);
-        xerr::LogMessage<xerr::default_states::FAILURE>(wstring_to_utf8(std::format(L"Error Code: {} With Error: {} for file: {}", Err, ErrString.data(), FileName)).c_str());
+        xerr::LogMessage<xerr::default_states::FAILURE>(wstring_to_utf8(std::format(L"Error Code: {} With Error: {} for file: {}", Err, ErrString.data(), FileName)));
     }
 }
 
