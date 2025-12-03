@@ -23,6 +23,7 @@ namespace xcolor
         ,   UINT_32_RGBU_8888
         ,   UINT_32_RGBA_8888
         ,   UINT_32_ABGR_8888
+        ,   UINT_8_R_8
         ,   UINT_24_RGB_888
         ,   UINT_24_ARGB_8565
         ,   UINT_16_RGBA_4444

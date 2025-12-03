@@ -181,8 +181,8 @@ namespace xcolor
             FormatDesc[(int)format::type::UINT_16_ABGR_4444] = format::descriptor{ format::type::UINT_16_ABGR_4444, std::uint32_t(1u << (int)format::type::UINT_16_ABGR_4444), 16, BUILD_ABGR(4,4,4,4) };
             FormatDesc[(int)format::type::UINT_16_ARGB_4444] = format::descriptor{ format::type::UINT_16_ARGB_4444, std::uint32_t(1u << (int)format::type::UINT_16_ARGB_4444), 16, BUILD_ARGB(4,4,4,4) };
             FormatDesc[(int)format::type::UINT_16_RGBA_4444] = format::descriptor{ format::type::UINT_16_RGBA_4444, std::uint32_t(1u << (int)format::type::UINT_16_RGBA_4444), 16, BUILD_RGBA(4,4,4,4) };
-            FormatDesc[(int)format::type::UINT_16_RGB_565] = format::descriptor{ format::type::UINT_16_RGB_565  , std::uint32_t(1u << (int)format::type::UINT_16_RGB_565)  , 16, BUILD_RGBU(5,6,5,0) };
-            FormatDesc[(int)format::type::UINT_16_BGR_565] = format::descriptor{ format::type::UINT_16_BGR_565  , std::uint32_t(1u << (int)format::type::UINT_16_BGR_565)  , 16, BUILD_BGRU(5,6,5,0) };
+            FormatDesc[(int)format::type::UINT_16_RGB_565]   = format::descriptor{ format::type::UINT_16_RGB_565  , std::uint32_t(1u << (int)format::type::UINT_16_RGB_565)  , 16, BUILD_RGBU(5,6,5,0) };
+            FormatDesc[(int)format::type::UINT_16_BGR_565]   = format::descriptor{ format::type::UINT_16_BGR_565  , std::uint32_t(1u << (int)format::type::UINT_16_BGR_565)  , 16, BUILD_BGRU(5,6,5,0) };
             FormatDesc[(int)format::type::UINT_16_ARGB_1555] = format::descriptor{ format::type::UINT_16_ARGB_1555, std::uint32_t(1u << (int)format::type::UINT_16_ARGB_1555), 16, BUILD_ARGB(1,5,5,5) };
             FormatDesc[(int)format::type::UINT_16_RGBA_5551] = format::descriptor{ format::type::UINT_16_RGBA_5551, std::uint32_t(1u << (int)format::type::UINT_16_RGBA_5551), 16, BUILD_RGBA(5,5,5,1) };
             FormatDesc[(int)format::type::UINT_16_URGB_1555] = format::descriptor{ format::type::UINT_16_URGB_1555, std::uint32_t(1u << (int)format::type::UINT_16_URGB_1555), 16, BUILD_URGB(1,5,5,5) };
@@ -190,7 +190,8 @@ namespace xcolor
             FormatDesc[(int)format::type::UINT_16_ABGR_1555] = format::descriptor{ format::type::UINT_16_ABGR_1555, std::uint32_t(1u << (int)format::type::UINT_16_ABGR_1555), 16, BUILD_ABGR(1,5,5,5) };
             FormatDesc[(int)format::type::UINT_16_UBGR_1555] = format::descriptor{ format::type::UINT_16_UBGR_1555, std::uint32_t(1u << (int)format::type::UINT_16_UBGR_1555), 16, BUILD_UBGR(1,5,5,5) };
             FormatDesc[(int)format::type::UINT_16_BGRA_5551] = format::descriptor{ format::type::UINT_16_BGRA_5551, std::uint32_t(1u << (int)format::type::UINT_16_BGRA_5551), 16, BUILD_BGRA(5,5,5,1) };
-            FormatDesc[(int)format::type::UINT_24_RGB_888] = format::descriptor{ format::type::UINT_24_RGB_888  , std::uint32_t(1u << (int)format::type::UINT_24_RGB_888)  , 24, BUILD_RGBU(8,8,8,0) };
+            FormatDesc[(int)format::type::UINT_8_R_8]        = format::descriptor{ format::type::UINT_8_R_8       , std::uint32_t(1u << (int)format::type::UINT_8_R_8)       ,  8, BUILD_RGBU(8,0,0,0) };
+            FormatDesc[(int)format::type::UINT_24_RGB_888]   = format::descriptor{ format::type::UINT_24_RGB_888  , std::uint32_t(1u << (int)format::type::UINT_24_RGB_888)  , 24, BUILD_RGBU(8,8,8,0) };
             FormatDesc[(int)format::type::UINT_24_ARGB_8565] = format::descriptor{ format::type::UINT_24_ARGB_8565, std::uint32_t(1u << (int)format::type::UINT_24_ARGB_8565), 24, BUILD_ARGB(8,5,6,5) };
             FormatDesc[(int)format::type::UINT_32_RGBU_8888] = format::descriptor{ format::type::UINT_32_RGBU_8888, std::uint32_t(1u << (int)format::type::UINT_32_RGBU_8888), 32, BUILD_RGBU(8,8,8,8) };
             FormatDesc[(int)format::type::UINT_32_URGB_8888] = format::descriptor{ format::type::UINT_32_URGB_8888, std::uint32_t(1u << (int)format::type::UINT_32_URGB_8888), 32, BUILD_URGB(8,8,8,8) };

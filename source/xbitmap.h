@@ -103,6 +103,7 @@ public:
     ,   R8G8B8U8     = xcolor::format::type::UINT_32_RGBU_8888
     ,   R8G8B8A8     = xcolor::format::type::UINT_32_RGBA_8888     // PRIMARY FORMAT (xcolor)
     ,   XCOLOR       = R8G8B8A8
+    ,   R8           = xcolor::format::type::UINT_8_R_8
     ,   R8G8B8       = xcolor::format::type::UINT_24_RGB_888
     ,   R4G4B4A4     = xcolor::format::type::UINT_16_RGBA_4444
     ,   R5G6B5       = xcolor::format::type::UINT_16_RGB_565
@@ -170,7 +171,6 @@ public:
         //
     ,   D24S8_FLOAT                                     // Floating point depth and 8bit stencil
     ,   D24S8                                           // Depth 24 bits and 8 bit Stencil    
-    ,   R8
     ,   R32                                             
     ,   R8G8                                            
     ,   R16G16B16A16                                    
