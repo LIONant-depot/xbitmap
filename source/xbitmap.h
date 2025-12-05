@@ -111,8 +111,20 @@ public:
        
     ,   XCOLOR_END                                      // end of the range of xcolor
 
-    ,   R32G32B32A32_FLOAT                              // 128-bit RGBA floating point (Used to work in HDR or high precision color)
-    ,   R32G32B32_FLOAT                                 // 96-bit RGB floating point(Used to work in HDR or high precision color)
+    ,   R32G32B32A32_FLOAT                              // 128-bits RGBA floating point (Used to work in HDR or high precision color)
+    ,   R32G32B32_FLOAT                                 //  96-bits RGB  floating point (Used to work in HDR or high precision color)
+    ,   R32G32_FLOAT                                    //  64-bits RG   floating point (Used to work in HDR or high precision color)
+    ,   R32_FLOAT                                       //  32-bits R    floating point (Used to work in HDR or high precision color)
+
+    ,   R16G16B16A16_SFLOAT                             // 96-bit RGBA signed floating point (Used to work in HDR or high precision color)
+//    ,   R16G16B16_SFLOAT                                // 64-bit RGB  signed floating point (Used to work in HDR or high precision color) Vulkan does not support this
+    ,   R16G16_SFLOAT                                   // 32-bit RG   signed floating point (Used to work in HDR or high precision color)
+    ,   R16_SFLOAT                                      // 16-bit RG   signed floating point (Used to work in HDR or high precision color)
+
+//    ,   R16G16B16A16_UFLOAT                             // 96-bit RGBA unsigned floating point (Used to work in HDR or high precision color) Vulkan does not support this
+//    ,   R16G16B16_UFLOAT                                // 64-bit RGB  unsigned floating point (Used to work in HDR or high precision color) Vulkan does not support this
+//    ,   R16G16_UFLOAT                                   // 32-bit RG   unsigned floating point (Used to work in HDR or high precision color) Vulkan does not support this
+//    ,   R16_UFLOAT                                      // 16-bit RG   unsigned floating point (Used to work in HDR or high precision color) Vulkan does not support this
 
         // S3TC Compressed Texture Image Formats 
     ,   BC1_4RGB                                        // DXT1_RGB 
@@ -174,8 +186,7 @@ public:
     ,   R32                                             
     ,   R8G8                                            
     ,   R16G16B16A16                                    
-    ,   R16G16B16A16_FLOAT                                  
-    ,   A2R10G10B10                                     
+    ,   A2R10G10B10                                
     ,   B11G11R11_FLOAT
 
         //

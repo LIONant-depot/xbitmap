@@ -393,69 +393,74 @@ bool xbitmap::hasAlphaChannel( void ) const noexcept
     {
         std::array< bool, static_cast<std::size_t>(format::ENUM_COUNT) > Table = {};
 
-        Table[ static_cast<int>(format::R4G4B4A4)              ] = true  ;
-        Table[ static_cast<int>(format::R5G6B5)                ] = false ;
-        Table[ static_cast<int>(format::B5G5R5A1)              ] = true  ;
-        Table[ static_cast<int>(format::R8G8B8)                ] = false ;
-        Table[ static_cast<int>(format::R8G8B8U8)              ] = false ;
-        Table[ static_cast<int>(format::R8G8B8A8)              ] = true  ;
-        Table[ static_cast<int>(format::B8G8R8A8)              ] = true  ;
-        Table[ static_cast<int>(format::B8G8R8U8)              ] = false ;
-        Table[ static_cast<int>(format::A8R8G8B8)              ] = true  ;
-        Table[ static_cast<int>(format::U8R8G8B8)              ] = false ;
+        Table[ static_cast<int>(format::R4G4B4A4)               ] = true  ;
+        Table[ static_cast<int>(format::R5G6B5)                 ] = false ;
+        Table[ static_cast<int>(format::B5G5R5A1)               ] = true  ;
+        Table[ static_cast<int>(format::R8G8B8)                 ] = false ;
+        Table[ static_cast<int>(format::R8G8B8U8)               ] = false ;
+        Table[ static_cast<int>(format::R8G8B8A8)               ] = true  ;
+        Table[ static_cast<int>(format::B8G8R8A8)               ] = true  ;
+        Table[ static_cast<int>(format::B8G8R8U8)               ] = false ;
+        Table[ static_cast<int>(format::A8R8G8B8)               ] = true  ;
+        Table[ static_cast<int>(format::U8R8G8B8)               ] = false ;
+                                                                
+        Table[ static_cast<int>(format::PAL4_R8G8B8A8)          ] = true  ;
+        Table[ static_cast<int>(format::PAL8_R8G8B8A8)          ] = true  ;
+                                                                   
+        Table[ static_cast<int>(format::ETC2_4RGB)              ] = false ;
+        Table[ static_cast<int>(format::ETC2_4RGBA1)            ] = false ;
+        Table[ static_cast<int>(format::ETC2_8RGBA)             ] = true  ;
+                                                                   
+        Table[ static_cast<int>(format::BC1_4RGB)               ] = false ;
+        Table[ static_cast<int>(format::BC1_4RGBA1)             ] = true  ;
+        Table[ static_cast<int>(format::BC2_8RGBA)              ] = true  ;
+        Table[ static_cast<int>(format::BC3_8RGBA)              ] = true  ;
+        Table[ static_cast<int>(format::BC3_81Y0X_NORMAL)       ] = false ;
+        Table[ static_cast<int>(format::BC4_4R)                 ] = false ;
+        Table[ static_cast<int>(format::BC5_8RG)                ] = false ;
+        Table[ static_cast<int>(format::BC5_8YX_NORMAL)         ] = false ;
+        Table[ static_cast<int>(format::BC6H_8RGB_SFLOAT)       ] = false ;
+        Table[ static_cast<int>(format::BC6H_8RGB_UFLOAT)       ] = false ;
+        Table[ static_cast<int>(format::BC7_8RGBA)              ] = false ;
+                                                                   
+        Table[ static_cast<int>(format::ASTC_4x4_8RGB)          ] = false ;
+        Table[ static_cast<int>(format::ASTC_5x4_6RGB)          ] = false ;
+        Table[ static_cast<int>(format::ASTC_5x5_5RGB)          ] = false ;
+        Table[ static_cast<int>(format::ASTC_6x5_4RGB)          ] = false ;
+        Table[ static_cast<int>(format::ASTC_6x6_4RGB)          ] = false ;
+        Table[ static_cast<int>(format::ASTC_8x5_3RGB)          ] = false ;
+        Table[ static_cast<int>(format::ASTC_8x6_3RGB)          ] = false ;
+        Table[ static_cast<int>(format::ASTC_8x8_2RGB)          ] = false ;
+        Table[ static_cast<int>(format::ASTC_10x5_3RGB)         ] = false ;
+        Table[ static_cast<int>(format::ASTC_10x6_2RGB)         ] = false ;
+        Table[ static_cast<int>(format::ASTC_10x8_2RGB)         ] = false ;
+        Table[ static_cast<int>(format::ASTC_10x10_1RGB)        ] = false ;
+        Table[ static_cast<int>(format::ASTC_12x10_1RGB)        ] = false ;
+        Table[ static_cast<int>(format::ASTC_12x12_1RGB)        ] = false ;
+                                                                   
+        Table[ static_cast<int>(format::PVR1_2RGB)              ] = false ;
+        Table[ static_cast<int>(format::PVR1_2RGBA)             ] = true  ;
+        Table[ static_cast<int>(format::PVR1_4RGB)              ] = false ;
+        Table[ static_cast<int>(format::PVR1_4RGBA)             ] = true  ;
+        Table[ static_cast<int>(format::PVR2_2RGBA)             ] = true  ;
+        Table[ static_cast<int>(format::PVR2_4RGBA)             ] = true  ;
+                                                                   
+        Table[ static_cast<int>(format::D24S8_FLOAT)            ] = false ;
+        Table[ static_cast<int>(format::D24S8)                  ] = false ;
+        Table[ static_cast<int>(format::R8)                     ] = false ;
+        Table[ static_cast<int>(format::R32)                    ] = false ;
+        Table[ static_cast<int>(format::R8G8)                   ] = false ;
+        Table[ static_cast<int>(format::R16G16B16A16)           ] = true  ;
+        Table[ static_cast<int>(format::R16G16B16A16_SFLOAT)    ] = true  ;
+        Table[ static_cast<int>(format::R16G16_SFLOAT)          ] = false ;
+        Table[ static_cast<int>(format::R16_SFLOAT)             ] = false ;
+        Table[ static_cast<int>(format::A2R10G10B10)            ] = true  ;
+        Table[ static_cast<int>(format::B11G11R11_FLOAT)        ] = false ;
 
-        Table[ static_cast<int>(format::PAL4_R8G8B8A8)         ] = true  ;
-        Table[ static_cast<int>(format::PAL8_R8G8B8A8)         ] = true  ;
-                                                                  
-        Table[ static_cast<int>(format::ETC2_4RGB)             ] = false ;
-        Table[ static_cast<int>(format::ETC2_4RGBA1)           ] = false ;
-        Table[ static_cast<int>(format::ETC2_8RGBA)            ] = true  ;
-                                                                  
-        Table[ static_cast<int>(format::BC1_4RGB)              ] = false ;
-        Table[ static_cast<int>(format::BC1_4RGBA1)            ] = true  ;
-        Table[ static_cast<int>(format::BC2_8RGBA)             ] = true  ;
-        Table[ static_cast<int>(format::BC3_8RGBA)             ] = true  ;
-        Table[ static_cast<int>(format::BC3_81Y0X_NORMAL)      ] = false ;
-        Table[ static_cast<int>(format::BC4_4R)                ] = false ;
-        Table[ static_cast<int>(format::BC5_8RG)               ] = false ;
-        Table[ static_cast<int>(format::BC5_8YX_NORMAL)        ] = false ;
-        Table[ static_cast<int>(format::BC6H_8RGB_SFLOAT)      ] = false ;
-        Table[ static_cast<int>(format::BC6H_8RGB_UFLOAT)      ] = false ;
-        Table[ static_cast<int>(format::BC7_8RGBA)             ] = false ;
-                                                                  
-        Table[ static_cast<int>(format::ASTC_4x4_8RGB)         ] = false ;
-        Table[ static_cast<int>(format::ASTC_5x4_6RGB)         ] = false ;
-        Table[ static_cast<int>(format::ASTC_5x5_5RGB)         ] = false ;
-        Table[ static_cast<int>(format::ASTC_6x5_4RGB)         ] = false ;
-        Table[ static_cast<int>(format::ASTC_6x6_4RGB)         ] = false ;
-        Table[ static_cast<int>(format::ASTC_8x5_3RGB)         ] = false ;
-        Table[ static_cast<int>(format::ASTC_8x6_3RGB)         ] = false ;
-        Table[ static_cast<int>(format::ASTC_8x8_2RGB)         ] = false ;
-        Table[ static_cast<int>(format::ASTC_10x5_3RGB)        ] = false ;
-        Table[ static_cast<int>(format::ASTC_10x6_2RGB)        ] = false ;
-        Table[ static_cast<int>(format::ASTC_10x8_2RGB)        ] = false ;
-        Table[ static_cast<int>(format::ASTC_10x10_1RGB)       ] = false ;
-        Table[ static_cast<int>(format::ASTC_12x10_1RGB)       ] = false ;
-        Table[ static_cast<int>(format::ASTC_12x12_1RGB)       ] = false ;
-                                                                  
-        Table[ static_cast<int>(format::PVR1_2RGB)             ] = false ;
-        Table[ static_cast<int>(format::PVR1_2RGBA)            ] = true  ;
-        Table[ static_cast<int>(format::PVR1_4RGB)             ] = false ;
-        Table[ static_cast<int>(format::PVR1_4RGBA)            ] = true  ;
-        Table[ static_cast<int>(format::PVR2_2RGBA)            ] = true  ;
-        Table[ static_cast<int>(format::PVR2_4RGBA)            ] = true  ;
-                                                                  
-        Table[ static_cast<int>(format::D24S8_FLOAT)           ] = false ;
-        Table[ static_cast<int>(format::D24S8)                 ] = false ;
-        Table[ static_cast<int>(format::R8)                    ] = false ;
-        Table[ static_cast<int>(format::R32)                   ] = false ;
-        Table[ static_cast<int>(format::R8G8)                  ] = false ;
-        Table[ static_cast<int>(format::R16G16B16A16)          ] = true  ;
-        Table[ static_cast<int>(format::R16G16B16A16_FLOAT)    ] = true  ;
-        Table[ static_cast<int>(format::A2R10G10B10)           ] = true  ;
-        Table[ static_cast<int>(format::B11G11R11_FLOAT)       ] = false ;
-
-        Table[ static_cast<int>(format::R32G32B32A32_FLOAT)    ] = true  ;
+        Table[ static_cast<int>(format::R32G32B32A32_FLOAT)     ] = true  ;
+        Table[ static_cast<int>(format::R32G32B32_FLOAT)        ] = false ;
+        Table[ static_cast<int>(format::R32G32_FLOAT)           ] = false ;
+        Table[ static_cast<int>(format::R32_FLOAT)              ] = false ;
 
         return Table;
     }();
