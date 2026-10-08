@@ -927,7 +927,7 @@ namespace xcolor
         }
 
         const float chroma = r - (g < b ? g : b);
-        H = std::fabsf(K + (g - b) / (6.f * chroma + 1e-20f));
+        H = std::fabs(K + (g - b) / (6.f * chroma + 1e-20f));
         S = chroma / (r + 1e-20f);
         V = r;
     }
@@ -944,7 +944,7 @@ namespace xcolor
         }
         else
         {
-            h = std::fmodf(h, 1.0f) / (60.0f / 360.0f);
+            h = std::fmod(h, 1.0f) / (60.0f / 360.0f);
             int   i = (int)h;
             float f = h - (float)i;
             float p = v * (1.0f - s);

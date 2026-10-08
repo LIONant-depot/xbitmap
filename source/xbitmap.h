@@ -96,18 +96,18 @@ public:
         //
         // Uncompressed formats
         //
-    ,   B8G8R8A8     = xcolor::format::type::UINT_32_BGRA_8888
-    ,   B8G8R8U8     = xcolor::format::type::UINT_32_BGRU_8888
-    ,   A8R8G8B8     = xcolor::format::type::UINT_32_ARGB_8888
-    ,   U8R8G8B8     = xcolor::format::type::UINT_32_URGB_8888
-    ,   R8G8B8U8     = xcolor::format::type::UINT_32_RGBU_8888
-    ,   R8G8B8A8     = xcolor::format::type::UINT_32_RGBA_8888     // PRIMARY FORMAT (xcolor)
+    ,   B8G8R8A8     = static_cast<std::uint8_t>(xcolor::format::type::UINT_32_BGRA_8888)
+    ,   B8G8R8U8     = static_cast<std::uint8_t>(xcolor::format::type::UINT_32_BGRU_8888)
+    ,   A8R8G8B8     = static_cast<std::uint8_t>(xcolor::format::type::UINT_32_ARGB_8888)
+    ,   U8R8G8B8     = static_cast<std::uint8_t>(xcolor::format::type::UINT_32_URGB_8888)
+    ,   R8G8B8U8     = static_cast<std::uint8_t>(xcolor::format::type::UINT_32_RGBU_8888)
+    ,   R8G8B8A8     = static_cast<std::uint8_t>(xcolor::format::type::UINT_32_RGBA_8888)     // PRIMARY FORMAT (xcolor)
     ,   XCOLOR       = R8G8B8A8
-    ,   R8           = xcolor::format::type::UINT_8_R_8
-    ,   R8G8B8       = xcolor::format::type::UINT_24_RGB_888
-    ,   R4G4B4A4     = xcolor::format::type::UINT_16_RGBA_4444
-    ,   R5G6B5       = xcolor::format::type::UINT_16_RGB_565
-    ,   B5G5R5A1     = xcolor::format::type::UINT_16_BGRA_5551
+    ,   R8           = static_cast<std::uint8_t>(xcolor::format::type::UINT_8_R_8)
+    ,   R8G8B8       = static_cast<std::uint8_t>(xcolor::format::type::UINT_24_RGB_888)
+    ,   R4G4B4A4     = static_cast<std::uint8_t>(xcolor::format::type::UINT_16_RGBA_4444)
+    ,   R5G6B5       = static_cast<std::uint8_t>(xcolor::format::type::UINT_16_RGB_565)
+    ,   B5G5R5A1     = static_cast<std::uint8_t>(xcolor::format::type::UINT_16_BGRA_5551)
        
     ,   XCOLOR_END                                      // end of the range of xcolor
 

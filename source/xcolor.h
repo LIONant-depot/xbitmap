@@ -223,7 +223,7 @@ namespace xcolor
                                                                     ) noexcept;
         constexpr       unit                    getBlendedColors    ( const unit       Src1
                                                                     , const unit       Src2
-                                                                    , float T 
+                                                                    , float t 
                                                                     ) const noexcept;
         constexpr       std::uint32_t           getDataFromColor    ( format DataFormat
                                                                     ) const noexcept;
