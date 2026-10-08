@@ -530,7 +530,7 @@ bool xbitmap::ComputeHasAlphaInfo( void ) const noexcept
 void xbitmap::setDefaultTexture( void ) noexcept
 {
     Kill();
-    std::memcpy( this, &xbitmap_details::s_DefaultBitmap, sizeof(*this) );
+    std::memcpy( static_cast<void*>(this), &xbitmap_details::s_DefaultBitmap, sizeof(*this) );
 }
 
 //-------------------------------------------------------------------------------

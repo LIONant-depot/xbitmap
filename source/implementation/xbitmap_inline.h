@@ -42,7 +42,7 @@ inline
 const xbitmap& xbitmap::operator = (xbitmap&& Src) noexcept
 {
     // copy all data
-    memcpy(this, &Src, sizeof(Src));
+    memcpy(static_cast<void*>(this), &Src, sizeof(Src));
 
     // Make sure to set the ownership of the data to me...
     Src.m_Flags.m_bOwnsMemory = false;
@@ -57,7 +57,7 @@ inline
 xbitmap::xbitmap(xbitmap&& Src) noexcept
 {
     // copy all data
-    memcpy(this, &Src, sizeof(Src));
+    memcpy(static_cast<void*>(this), &Src, sizeof(Src));
 
     // Make sure to set the ownership of the data to me...
     Src.m_Flags.m_bOwnsMemory = false;
