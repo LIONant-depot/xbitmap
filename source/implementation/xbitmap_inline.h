@@ -68,14 +68,14 @@ xbitmap::xbitmap(xbitmap&& Src) noexcept
 inline
 xbitmap::~xbitmap(void) noexcept
 {
-    if (m_pData && m_Flags.m_bOwnsMemory) delete m_pData;
+    if (m_pData && m_Flags.m_bOwnsMemory) delete[] reinterpret_cast<std::byte*>(m_pData);
 }
 
 //-------------------------------------------------------------------------------
 inline
 void xbitmap::Kill(void) noexcept
 {
-    if (m_pData && m_Flags.m_bOwnsMemory) delete m_pData;
+    if (m_pData && m_Flags.m_bOwnsMemory) delete[] reinterpret_cast<std::byte*>(m_pData);
 
     m_DataSize      = 0;
     m_FaceSize      = 0;
